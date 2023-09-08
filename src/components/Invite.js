@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import userName from "../data/user";
 import member from "../data/mumber";
 import { useParams } from "react-router-dom";
@@ -37,7 +37,6 @@ const Invite = () => {
     // setInvitedUser([...invitedUser, { props, pass }]);
   };
   //   console.log("invitedUser", user);
-
   return (
     <div>
       {allTeamMember.map(

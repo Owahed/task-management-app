@@ -23,8 +23,8 @@ const Registration = () => {
     // ]);
     await regUserAll({ name, bio, email: user.email, img });
     await handleCreateMember({
-      name: user.displayName,
-      email: user.email,
+      name: user?.displayName || name,
+      email: user?.email,
       assignTasks: [],
     });
     navigatePage("/home");

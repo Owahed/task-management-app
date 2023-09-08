@@ -97,7 +97,7 @@ export function UserAuthContextProvider({ children }) {
   };
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(allTasks));
-  }, [allTasks]);
+  }, [allTasks, allTeamMember, allTeam]);
 
   // useEffect(() => {
   //   const items = JSON.parse(localStorage.getItem("items"));
@@ -117,7 +117,7 @@ export function UserAuthContextProvider({ children }) {
   };
   useEffect(() => {
     localStorage.setItem("team", JSON.stringify(allTeam));
-  }, [allTeam]);
+  }, [allTasks, allTeamMember, allTeam]);
 
   //member------------------------
   const handleCreateMember = (newMember) => {
@@ -127,8 +127,8 @@ export function UserAuthContextProvider({ children }) {
   };
   useEffect(() => {
     localStorage.setItem("member", JSON.stringify(allTeamMember));
-  }, [allTeamMember]);
-  console.log("object", allTasks);
+  }, [allTasks, allTeamMember, allTeam]);
+  console.log("object", allTeamMember);
   return (
     <userAuthContext.Provider
       value={{
