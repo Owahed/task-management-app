@@ -18,18 +18,12 @@ const Navbar = () => {
       {user && (
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
               {user ? user.displayName || regUsers.name : "Log in"}
             </a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item m-3">
-                  <Link to="/home">Home</Link>
-                </li>
-                <li class="nav-item m-3">
-                  <Link to="/">hi</Link>
-                </li>
                 <li class="nav-item dropdown ">
                   <img
                     src={user.photoURL || regUsers.img}

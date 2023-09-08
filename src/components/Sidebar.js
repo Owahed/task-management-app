@@ -5,6 +5,7 @@ import TaskManagement from "./TaskManagement";
 import Team from "./Team";
 import generateUniqueId from "generate-unique-id";
 import tasks from "../data/data";
+import FilterComponent from "./FilterComponent";
 
 const Sidebar = () => {
   const [task, setTask] = useState(true);
@@ -25,8 +26,8 @@ const Sidebar = () => {
     }
     if (props === "Filtering") {
       setTask(false);
-      setFiltering(false);
-      setTeam(true);
+      setFiltering(true);
+      setTeam(false);
     }
   };
 
@@ -50,6 +51,7 @@ const Sidebar = () => {
       </div>
       <div>{task && <TaskManagement onCreateTask={handleCreateTask} />}</div>
       <div>{team && <Team />}</div>
+      <div>{filtering && <FilterComponent />}</div>
     </div>
   );
 };

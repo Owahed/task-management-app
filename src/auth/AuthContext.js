@@ -77,7 +77,7 @@ export function UserAuthContextProvider({ children }) {
     };
   }, []);
   // const items = JSON.parse(localStorage.getItem("items"));
-  const [allTeamMember, setAllMember] = useState(getLocalMember() || member);
+  const [allTeamMember, setAllMember] = useState(member);
   const [allTasks, setAllTasks] = useState(getLocalTasks() || tasks);
   const [allTeam, setAllTeam] = useState(getLocalTeam() || teamData);
 

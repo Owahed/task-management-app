@@ -7,7 +7,7 @@ const tasks = [
     description:
       " be distracted by the readable content of a page when looking at its layout. ",
     dueDate: "2023-09-13",
-    priority: "Medium ",
+    priority: "medium ",
     assignee: "",
     howShow: [],
   },
@@ -20,7 +20,7 @@ const tasks = [
     description:
       " be distracted by the readable content of a page when looking at its layout. ",
     dueDate: "2023-09-13",
-    priority: "Medium ",
+    priority: "medium ",
     assignee: "",
     show: [],
   },
