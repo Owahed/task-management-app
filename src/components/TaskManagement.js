@@ -10,7 +10,7 @@ const TaskManagement = ({ onCreateTask }) => {
     dueDate: "",
     priority: "",
     assignee: "",
-    team: "",
+
     howShow: [],
   });
 
@@ -31,7 +31,7 @@ const TaskManagement = ({ onCreateTask }) => {
       dueDate: "",
       priority: "",
       assignee: "",
-      team: "",
+
       howShow: [],
     });
     // console.log("taskData", taskData);

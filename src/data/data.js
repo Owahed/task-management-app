@@ -2,7 +2,7 @@ const tasks = [
   {
     id: 1,
     title: "Task 1",
-    team: "Team A",
+
     status: "In Progress",
     description:
       " be distracted by the readable content of a page when looking at its layout. ",
@@ -15,7 +15,7 @@ const tasks = [
   {
     id: 2,
     title: "Task 2",
-    team: "Team B",
+
     status: "Completed",
     description:
       " be distracted by the readable content of a page when looking at its layout. ",

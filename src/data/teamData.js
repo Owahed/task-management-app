@@ -4,15 +4,14 @@ const teamData = [
     teamName: "Hinki panki",
     teamLeaderEmail: "owahedhossain33@gmail.com",
     teamLeaderName: "owahed",
-    invitedUser: ["fhasldkfla", "fhaksdjakl"],
+    invitedUser: [],
     description: "fhkadjshfalkj",
   },
   {
     id: 1,
     teamName: "Hinki",
-    teamLeaderEmail: "owahedhossain33@gmail.com",
-    teamLeaderName: "owahed",
-    invitedUser: ["fhasldkfla", "fhaksdjakl"],
+
+    invitedUser: [],
     description: "hfkasdjh",
   },
 ];

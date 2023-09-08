@@ -31,6 +31,15 @@ const getLocalMember = () => {
     return [];
   }
 };
+const getLocalTeam = () => {
+  const items = localStorage.getItem("team");
+
+  if (items) {
+    return JSON.parse(items);
+  } else {
+    return [];
+  }
+};
 
 const userAuthContext = createContext();
 
@@ -69,8 +78,8 @@ export function UserAuthContextProvider({ children }) {
   }, []);
   // const items = JSON.parse(localStorage.getItem("items"));
   const [allTeamMember, setAllMember] = useState(getLocalMember() || member);
-  const [allTasks, setAllTasks] = useState(getLocalTasks());
-  const [allTeam, setAllTeam] = useState(teamData);
+  const [allTasks, setAllTasks] = useState(getLocalTasks() || tasks);
+  const [allTeam, setAllTeam] = useState(getLocalTeam() || teamData);
 
   // useEffect(() => {
   //   // Retrieve data from local storage when the component mounts
@@ -106,9 +115,9 @@ export function UserAuthContextProvider({ children }) {
     setAllTeam([...allTeam, newTeam]);
     // setAllTasks([newTask]);
   };
-  // useEffect(() => {
-  //   localStorage.setItem("team", JSON.stringify(allTeam));
-  // }, [allTeam]);
+  useEffect(() => {
+    localStorage.setItem("team", JSON.stringify(allTeam));
+  }, [allTeam]);
 
   //member------------------------
   const handleCreateMember = (newMember) => {
