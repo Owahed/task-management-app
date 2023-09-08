@@ -6,7 +6,7 @@ const Registration = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
 
-  const { user, regUserAll } = useUserAuth();
+  const { user, regUserAll, handleCreateMember } = useUserAuth();
   const [img, setImg] = useState(null);
   const navigatePage = useNavigate();
 
@@ -22,9 +22,14 @@ const Registration = () => {
     //   },
     // ]);
     await regUserAll({ name, bio, email: user.email, img });
+    await handleCreateMember({
+      name: user.displayName,
+      email: user.email,
+      assignTasks: [],
+    });
     navigatePage("/home");
   };
-
+  console.log(user);
   //   useEffect(() => {
   //     if (regUser.length) {
   //       localStorage.setItem("items", JSON.stringify(regUser));

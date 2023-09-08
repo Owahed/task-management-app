@@ -11,10 +11,20 @@ import { auth } from "../firebase";
 import tasks from "../data/data";
 import generateUniqueId from "generate-unique-id";
 import member from "../data/mumber";
+import teamData from "../data/teamData";
 
-const getLocalItem = () => {
+const getLocalTasks = () => {
   const items = localStorage.getItem("tasks");
-  console.log("1", items);
+
+  if (items) {
+    return JSON.parse(items);
+  } else {
+    return [];
+  }
+};
+const getLocalMember = () => {
+  const items = localStorage.getItem("member");
+
   if (items) {
     return JSON.parse(items);
   } else {
@@ -58,9 +68,9 @@ export function UserAuthContextProvider({ children }) {
     };
   }, []);
   // const items = JSON.parse(localStorage.getItem("items"));
-
-  const [allTasks, setAllTasks] = useState(getLocalItem());
-  const [allTeam, setAllTeam] = useState(member);
+  const [allTeamMember, setAllMember] = useState(getLocalMember() || member);
+  const [allTasks, setAllTasks] = useState(getLocalTasks());
+  const [allTeam, setAllTeam] = useState(teamData);
 
   // useEffect(() => {
   //   // Retrieve data from local storage when the component mounts
@@ -89,14 +99,27 @@ export function UserAuthContextProvider({ children }) {
   // }, []);
 
   // console.log("allTasks", allTasks);
-  //team
+  //team-------------------------------------
 
   const handleCreateTeam = (newTeam) => {
     newTeam.id = generateUniqueId();
     setAllTeam([...allTeam, newTeam]);
     // setAllTasks([newTask]);
   };
-  console.log("object", allTeam);
+  // useEffect(() => {
+  //   localStorage.setItem("team", JSON.stringify(allTeam));
+  // }, [allTeam]);
+
+  //member------------------------
+  const handleCreateMember = (newMember) => {
+    newMember.id = generateUniqueId();
+    setAllMember([...allTeamMember, newMember]);
+    // setAllTasks([newTask]);
+  };
+  useEffect(() => {
+    localStorage.setItem("member", JSON.stringify(allTeamMember));
+  }, [allTeamMember]);
+  console.log("object", allTasks);
   return (
     <userAuthContext.Provider
       value={{
@@ -110,6 +133,9 @@ export function UserAuthContextProvider({ children }) {
         handleCreateTask,
         allTasks,
         handleCreateTeam,
+        allTeam,
+        handleCreateMember,
+        allTeamMember,
       }}
     >
       {children}

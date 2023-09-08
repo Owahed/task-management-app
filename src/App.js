@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Registration from "./components/Registration";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Invite from "./components/Invite";
 
 function App() {
   // const { user } = useUserAuth();
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/task" element={<Registration />} />
+          <Route path="/invite/:pass/:foo" element={<Invite />} />
           <Route
             path="/home"
             element={

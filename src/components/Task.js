@@ -1,5 +1,7 @@
 // src/components/Task.js
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useUserAuth } from "../auth/AuthContext";
 
 const Task = ({ task }) => {
   const [status, setStatus] = useState(task.status || "In Progress");
@@ -17,6 +19,9 @@ const Task = ({ task }) => {
       <button className="btn btn-secondary" onClick={toggleStatus}>
         {status === "In Progress" ? "Mark Completed" : "Mark In Progress"}
       </button>
+      <Link to={`/invite/${task.id}/task`} class="btn btn-primary">
+        assignTasks
+      </Link>
     </div>
   );
 };

@@ -11,6 +11,7 @@ const TaskManagement = ({ onCreateTask }) => {
     priority: "",
     assignee: "",
     team: "",
+    howShow: [],
   });
 
   const handleChange = (e) => {
@@ -31,6 +32,7 @@ const TaskManagement = ({ onCreateTask }) => {
       priority: "",
       assignee: "",
       team: "",
+      howShow: [],
     });
     // console.log("taskData", taskData);
   };
@@ -48,7 +50,7 @@ const TaskManagement = ({ onCreateTask }) => {
             onChange={handleChange}
           />
           <br />
-          <input
+          {/* <input
             type="text"
             name="team"
             className="m-2"
@@ -56,7 +58,7 @@ const TaskManagement = ({ onCreateTask }) => {
             value={taskData.team}
             onChange={handleChange}
           />
-          <br />
+          <br /> */}
           <textarea
             name="description"
             className="m-2"

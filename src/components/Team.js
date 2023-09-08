@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useUserAuth } from "../auth/AuthContext";
 import { Link } from "react-router-dom";
+import AllTeam from "./AllTeam";
 
 const Team = () => {
   const [show, setShow] = useState(false);
-  const { user, handleCreateTeam } = useUserAuth();
+  const { user, handleCreateTeam, allTeam } = useUserAuth();
   const [teamData, setTeamData] = useState({
     description: "",
     email: user.email,
-    team: "",
+    teamName: "",
+    invitedUser: [],
   });
 
   const handleChange = (e) => {
@@ -24,12 +26,13 @@ const Team = () => {
     handleCreateTeam(teamData);
     setTeamData({
       description: "",
-      team: "",
+      teamName: "",
+      invitedUser: [],
     });
   };
 
   return (
-    <div>
+    <div className="d-flex">
       <div>
         <div class="card" style={{ width: "18rem" }}>
           <div class="card-body">
@@ -46,42 +49,48 @@ const Team = () => {
             </a>
           </div>
         </div>
-      </div>
-      <div>
-        {show && (
-          <form onSubmit={handleSubmitTeam}>
-            <input
-              type="text"
-              name="title"
-              className="m-2"
-              placeholder="Title"
-              value={teamData.title}
-              onChange={handleChange}
-            />
-            <br />
-            <input
-              type="text"
-              name="team"
-              className="m-2"
-              placeholder="team"
-              value={teamData.team}
-              onChange={handleChange}
-            />
-            <br />
-            <textarea
-              name="description"
-              className="m-2"
-              placeholder="Description"
-              value={teamData.description}
-              onChange={handleChange}
-            ></textarea>
-            <br />
 
-            <button className="m-2 btn btn-primary" type="submit">
-              Create
-            </button>
-          </form>
-        )}
+        <div>
+          {show && (
+            <form onSubmit={handleSubmitTeam}>
+              {/* <input
+                type="text"
+                name="title"
+                className="m-2"
+                placeholder="Title"
+                value={teamData.title}
+                onChange={handleChange}
+              />
+              <br /> */}
+              <input
+                type="text"
+                name="teamName"
+                className="m-2"
+                placeholder="Team Name"
+                value={teamData.teamName}
+                onChange={handleChange}
+              />
+              <br />
+              <textarea
+                name="description"
+                className="m-2"
+                placeholder="Description"
+                value={teamData.description}
+                onChange={handleChange}
+              ></textarea>
+              <br />
+
+              <button className="m-2 btn btn-primary" type="submit">
+                Create
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+      <div className="task-components p-5 m-5">
+        {allTeam?.map((team) => (
+          <AllTeam key={team.id} team={team} />
+        ))}
       </div>
     </div>
   );

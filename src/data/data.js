@@ -9,6 +9,7 @@ const tasks = [
     dueDate: "2023-09-13",
     priority: "Medium ",
     assignee: "",
+    howShow: [],
   },
 
   {
@@ -21,6 +22,7 @@ const tasks = [
     dueDate: "2023-09-13",
     priority: "Medium ",
     assignee: "",
+    show: [],
   },
 ];
 
