@@ -15,7 +15,6 @@ function TaskManager() {
   const handleFilterChange = (filters) => {
     setAppliedFilters(filters);
 
-    console.log(filters);
     const filteredTasks = tasks.filter((task) => {
       const statusFilterPassed =
         (!filters.status.completed || task.status === "completed") &&
@@ -33,13 +32,14 @@ function TaskManager() {
 
     setFilteredTasks(filteredTasks);
   };
-  console.log(filteredTasks);
   return (
     <div>
       <TaskFilter onFilterChange={handleFilterChange} />
-      <ul>
+      <ul className="mt-2">
         {filteredTasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
+          <li key={task.id}>
+            <b className="text-info">Task Name:</b> {task.title}
+          </li>
         ))}
       </ul>
     </div>

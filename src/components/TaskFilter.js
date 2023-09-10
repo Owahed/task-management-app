@@ -64,7 +64,8 @@ function TaskFilter({ onFilterChange }) {
           onChange={handleDueDateChange}
         />
       </label>
-      <div>
+
+      <div className="mt-3">
         Priority:
         <label>
           <input
@@ -97,7 +98,9 @@ function TaskFilter({ onFilterChange }) {
           Low
         </label>
       </div>
-      <button onClick={applyFilters}>Apply Filters</button>
+      <button className="mt-2 btn btn-info" onClick={applyFilters}>
+        Apply Filters
+      </button>
     </div>
   );
 }

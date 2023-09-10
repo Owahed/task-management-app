@@ -6,7 +6,7 @@ import { useUserAuth } from "../auth/AuthContext";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const { signUp } = useUserAuth();
+  const { signUp, googleSignIn } = useUserAuth();
   const [error, setError] = useState("");
   const navigatePage = useNavigate();
 
@@ -21,11 +21,19 @@ const Signup = () => {
       setError(err.message);
     }
   };
-
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      await googleSignIn();
+      navigatePage("/registration");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <>
       {" "}
-      <div className="container w-25 text-center">
+      <div className="container w-25 text-center card-background">
         <div className=" text-center">
           <h1>Sing Up</h1>
           {error && (
@@ -63,11 +71,11 @@ const Signup = () => {
             </button>
           </form>
           <hr />
-          <div>
+          <div className="d-flex justify-content-center">
             <GoogleButton
-              className="g-btn"
+              className="g-btn "
               type="dark"
-              // onClick={handleGoogleSignIn}
+              onClick={handleGoogleSignIn}
             />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useUserAuth } from "../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -13,14 +13,6 @@ const Registration = () => {
   const changeTheme = async (e) => {
     e.preventDefault();
 
-    // setRegUser([
-    //   {
-    //     name,
-    //     bio,
-    //     email: user.email,
-    //     img,
-    //   },
-    // ]);
     await regUserAll({ name, bio, email: user.email, img });
     await handleCreateMember({
       name: user?.displayName || name,
@@ -29,31 +21,10 @@ const Registration = () => {
     });
     navigatePage("/home");
   };
-  console.log(user);
-  //   useEffect(() => {
-  //     if (regUser.length) {
-  //       localStorage.setItem("items", JSON.stringify(regUser));
-  //     }
-  //   }, [regUser]);
 
-  //   useEffect(() => {
-  //     const items = JSON.parse(localStorage.getItem("items"));
-  //     if (items) {
-  //       console.log(items);
-  //     }
-  //   }, []);
-
-  //   localStorage.setItem("theme", JSON.stringify(regUser));
-  //   useEffect(() => {
-  //     // const savedTheme = localStorage.getItem("theme");
-  //     const savedTheme = JSON.parse(localStorage.getItem("theme"));
-  //     if (savedTheme) {
-  //       console.log("hi", savedTheme);
-  //     }
-  //   }, [regUser]);
   return (
-    <div className="container w-25 text-center">
-      <h1 className="pt-5">Registration</h1>
+    <div className="container w-25 text-center card-background">
+      <h1 className="pt-3">Registration</h1>
       <form onSubmit={changeTheme}>
         {user.displayName === null && (
           <div className="form-group">
@@ -66,6 +37,8 @@ const Registration = () => {
             />
           </div>
         )}
+        <br />
+
         <div className="form-group">
           <label for="exampleInputPassword1">Bio</label>
           <input
@@ -75,6 +48,7 @@ const Registration = () => {
             onChange={(e) => setBio(e.target.value)}
           />
         </div>
+        <br />
         {user.photoURL === null && (
           <div class="form-group">
             <label for="exampleFormControlFile1">Image</label>
@@ -88,6 +62,7 @@ const Registration = () => {
             />
           </div>
         )}
+        <br />
 
         <button type="submit" className="btn btn-primary">
           Submit

@@ -87,7 +87,7 @@ const Team = () => {
           )}
         </div>
       </div>
-      <div className="task-components p-5 m-5">
+      <div className="task-components ">
         {allTeam?.map((team) => (
           <AllTeam key={team.id} team={team} />
         ))}

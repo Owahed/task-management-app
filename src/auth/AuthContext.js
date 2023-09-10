@@ -46,7 +46,6 @@ const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
   const [regUsers, setRegUsers] = useState({});
-  //   console.log(auth);
 
   function logIn(email, password) {
     console.log(email);
@@ -68,7 +67,6 @@ export function UserAuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
       setUser(currentuser);
     });
 
@@ -76,44 +74,23 @@ export function UserAuthContextProvider({ children }) {
       unsubscribe();
     };
   }, []);
-  // const items = JSON.parse(localStorage.getItem("items"));
   const [allTeamMember, setAllMember] = useState(member);
   const [allTasks, setAllTasks] = useState(getLocalTasks() || tasks);
   const [allTeam, setAllTeam] = useState(getLocalTeam() || teamData);
 
-  // useEffect(() => {
-  //   // Retrieve data from local storage when the component mounts
-  //   const items = localStorage.getItem("tasks");
-  //   console.log("1", items);
-  //   if (items) {
-  //     setAllTasks(JSON.parse(items));
-  //   }
-  // }, []);
-
   const handleCreateTask = (newTask) => {
     newTask.id = generateUniqueId();
     setAllTasks([...allTasks, newTask]);
-    // setAllTasks([newTask]);
   };
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(allTasks));
   }, [allTasks, allTeamMember, allTeam]);
 
-  // useEffect(() => {
-  //   const items = JSON.parse(localStorage.getItem("items"));
-  //   if (items) {
-  //     setAllTasks(items);
-  //   }
-  //   return items;
-  // }, []);
-
-  // console.log("allTasks", allTasks);
   //team-------------------------------------
 
   const handleCreateTeam = (newTeam) => {
     newTeam.id = generateUniqueId();
     setAllTeam([...allTeam, newTeam]);
-    // setAllTasks([newTask]);
   };
   useEffect(() => {
     localStorage.setItem("team", JSON.stringify(allTeam));
@@ -123,12 +100,10 @@ export function UserAuthContextProvider({ children }) {
   const handleCreateMember = (newMember) => {
     newMember.id = generateUniqueId();
     setAllMember([...allTeamMember, newMember]);
-    // setAllTasks([newTask]);
   };
   useEffect(() => {
     localStorage.setItem("member", JSON.stringify(allTeamMember));
   }, [allTasks, allTeamMember, allTeam]);
-  console.log("object", allTeamMember);
   return (
     <userAuthContext.Provider
       value={{

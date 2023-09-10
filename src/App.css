@@ -43,3 +43,13 @@
   padding: 20px;
   margin-left: 30px;
 }
+
+.card-background {
+  background-color: cyan;
+  margin-top: 5%;
+  border-radius: 10px;
+  padding: 30px;
+}
+ul {
+  list-style: none;
+}

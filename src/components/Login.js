@@ -33,9 +33,9 @@ const Login = () => {
   };
   return (
     <>
-      <div className="container w-25 text-center">
+      <div className="container w-25 text-center card-background">
         <div className=" text-center">
-          <h1>log in</h1>
+          <h1>Log In </h1>
           {error && (
             <div className="alert alert-danger" role="alert">
               {error}
@@ -53,9 +53,6 @@ const Login = () => {
                 aria-describedby="emailHelp"
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <div id="emailHelp" className="form-text">
-                We'll never share your email with anyone else.
-              </div>
             </div>
             <div className="mb-3">
               <label for="exampleInputPassword1" className="form-label">
@@ -74,7 +71,7 @@ const Login = () => {
             </button>
           </form>
           <hr />
-          <div className="flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <GoogleButton
               className="g-btn"
               type="dark"
